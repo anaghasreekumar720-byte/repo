@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "name": "portfolio",
+        "description": "No description",
+        "url": "https://github.com/anaghasreekumar720-byte/portfolio"
+    },
+    {
+        "name": "pulse",
+        "description": "No description",
+        "url": "https://github.com/anaghasreekumar720-byte/pulse"
+    }
+]

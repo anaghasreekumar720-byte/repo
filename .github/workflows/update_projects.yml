@@ -1,6 +1,9 @@
 name: Update Portfolio Projects
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -8,15 +11,11 @@ permissions:
 
 jobs:
   update-projects:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,13 +29,13 @@ jobs:
         run: python update_projects.py
 
       - name: Commit Updated JSON
-  run: |
-    git config --global user.name "github-actions"
-    git config --global user.email "github-actions@github.com"
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-    git pull --rebase origin main
+          git add projects.json
+          git commit -m "Auto update projects" || echo "No changes"
 
-    git add projects.json
-    git commit -m "Auto update projects" || echo "No changes"
+          git pull --rebase origin main || true
 
-    git push
+          git push

@@ -30,12 +30,13 @@ jobs:
         run: python update_projects.py
 
       - name: Commit Updated JSON
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+  run: |
+    git config --global user.name "github-actions"
+    git config --global user.email "github-actions@github.com"
 
-          git add projects.json
+    git pull --rebase origin main
 
-          git commit -m "Auto update projects" || echo "No changes to commit"
+    git add projects.json
+    git commit -m "Auto update projects" || echo "No changes"
 
-          git push
+    git push

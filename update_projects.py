@@ -2,7 +2,7 @@ import requests
 import json
 
 # Replace with your GitHub username
-USERNAME = "YOUR_GITHUB_USERNAME"
+USERNAME = "anaghasreekumar720-byte"
 
 url = f"https://api.github.com/users/{USERNAME}/repos"
 
